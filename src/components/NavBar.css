@@ -1,0 +1,40 @@
+.NavBar {
+  position: absolute;
+  z-index: 100;
+  width: 100%;
+  height: 104px;
+
+  box-sizing: border-box;
+  padding: 30px;
+
+  background: rgba(27, 27, 27, 0.77);
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.NavBar-Logo {
+  display: flex;
+  align-items: center;
+
+  font-size: 24px;
+
+  color: #dedddd;
+}
+.NavBar-logo {
+  margin-right: 13px;
+  position: relative;
+  top: 6px;
+  height: 34px;
+}
+
+.NavBar-right {
+  margin-left: auto;
+  display: flex;
+}
+.NavBar-button {
+  font-size: 14px;
+  margin-left: 27px;
+  color: #fff;
+}
