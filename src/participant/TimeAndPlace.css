@@ -1,0 +1,8 @@
+.TimeAndPlace {
+  display: flex;
+}
+
+.TimeAndPlace-content {
+  margin-left: 8px;
+  margin-right: 8px;
+}

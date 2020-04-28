@@ -1,0 +1,42 @@
+.Tournament {
+  width: 100%;
+}
+
+.Tournament-header {
+  width: 100%;
+  min-height: 200px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: 600;
+  font-size: 24px;
+
+  color: #343434;
+}
+.Tournament-headerWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.Tournament-name {
+  max-width: 500px;
+  text-align: center;
+}
+
+.Tournament-leftVector {
+  align-self: flex-end;
+  position: relative;
+  top: 8px;
+  left: -2px;
+}
+.Tournament-rightVector {
+  align-self: flex-start;
+  position: relative;
+  top: -8px;
+  left: 2px;
+}

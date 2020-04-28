@@ -33,8 +33,15 @@
   margin-left: auto;
   display: flex;
 }
+.NavBar-right > a {
+  text-decoration: none;
+}
+
 .NavBar-button {
   font-size: 14px;
   margin-left: 27px;
   color: #fff;
+}
+.NavBar-button:hover {
+  color: rgb(180, 180, 180);
 }

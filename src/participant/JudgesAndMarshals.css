@@ -1,0 +1,10 @@
+.JudgesAndMarshals {
+  display: flex;
+}
+.JudgesAndMarshals-column {
+  margin-left: 10px;
+  margin-right: 80px;
+}
+.JudgesAndMarshals-title {
+  font-weight: 600;
+}
