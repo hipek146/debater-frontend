@@ -20,23 +20,23 @@ export const NavBarComponent = (props) => {
       <div className="NavBar-right">
         {props.user.logged ? (
           <>
-            <Link to="/">
-              <div className="NavBar-button">MOJE KONTO</div>
+            <Link className="NavBar-button" to="/konto">
+              MOJE KONTO
             </Link>
-            <HashLink to="/#turniej">
-              <div className="NavBar-button">TURNIEJ</div>
+            <HashLink className="NavBar-button" to="/#turniej">
+              TURNIEJ
             </HashLink>
-            <Link to="/" onClick={props.logOut}>
-              <div className="NavBar-button">WYLOGUJ SIĘ</div>
+            <Link to="/" className="NavBar-button" onClick={props.logOut}>
+              WYLOGUJ SIĘ
             </Link>
           </>
         ) : (
           <>
-            <Link to="rejestracja">
-              <div className="NavBar-button">REJESTRACJA</div>
+            <Link className="NavBar-button" to="rejestracja">
+              REJESTRACJA
             </Link>
-            <Link to="logowanie">
-              <div className="NavBar-button">LOGOWANIE</div>
+            <Link className="NavBar-button" to="logowanie">
+              LOGOWANIE
             </Link>
           </>
         )}

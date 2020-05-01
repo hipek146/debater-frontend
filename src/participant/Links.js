@@ -3,32 +3,18 @@ import goTop from "assets/images/goTop.png";
 import { HashLink } from "react-router-hash-link";
 
 export const Links = (props) => {
-  //const {teams} = props;
-
-  const links = [
-    {
-      name: "PLIK 1",
-      href: "http://www.google.pl",
-    },
-    {
-      name: "PLIK 2",
-      href: "http://www.google.pl",
-    },
-    {
-      name: "PLIK 3",
-      href: "http://www.google.pl",
-    },
-  ];
+  const { links } = props;
 
   return (
     <div style={style.main}>
       <div style={style.leftWrapper}>
         <div style={style.left}>
-          {links.map((link, i) => (
-            <a style={style.link} href={link.href} key={i}>
-              {link.name}
-            </a>
-          ))}
+          {links &&
+            links.map((link, i) => (
+              <a style={style.link} href={link.href} key={i}>
+                {link.name}
+              </a>
+            ))}
         </div>
       </div>
       <div style={style.right}>
@@ -43,6 +29,7 @@ export const Links = (props) => {
 const style = {
   main: {
     display: "flex",
+    flexWrap: "wrap",
   },
   leftWrapper: {
     display: "flex",
@@ -66,5 +53,6 @@ const style = {
     flexDirection: "column",
     alignItems: "center",
     padding: "10px",
+    marginLeft: "auto",
   },
 };

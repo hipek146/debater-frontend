@@ -1,33 +1,27 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Debates.css";
 
 export const Debates = (props) => {
-  //const {debates} = props;
-
-  const debates = [
-    {
-      name: "Debata 1",
-      link: "link1",
-    },
-    {
-      name: "Debata 2",
-      link: "link2",
-    },
-    {
-      name: "Debata 3",
-      link: "link3",
-      my: true,
-    },
-  ];
+  const { debates } = props;
 
   return (
     <div className="Debates">
-      {debates.map((debate, i) => (
-        <div className="Debates-flex">
-          {debate.my && <div className="Debates-mine">Moja debata</div>}
-          <div className="Debates-name">{debate.name}</div>
-        </div>
-      ))}
+      {debates &&
+        debates.map((debate, i) => {
+          let header;
+          if (debate.my) header = "MOJA DEBATA";
+          else if (debate.upcoming) header = "PRZYSZŁA DEBATA";
+          else if (debate.past) header = "ZAKOŃCZONA DEBATA";
+          return (
+            <Link to="/debata" key={i}>
+              <div className="Debates-flex">
+                {header && <div className="Debates-mine">{header}</div>}
+                <div className="Debates-name">{debate.name}</div>
+              </div>
+            </Link>
+          );
+        })}
     </div>
   );
 };

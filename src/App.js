@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import {
   BrowserRouter as Router,
@@ -9,17 +9,52 @@ import {
 import "./App.css";
 import { HomeScreen } from "navigation/HomeScreen.js";
 import { ParticipantScreen } from "navigation/ParticipantScreen.js";
+import { AccountScreen } from "navigation/AccountScreen.js";
+import { DebateScreen } from "navigation/DebateScreen.js";
 import { SignInScreen } from "navigation/SignInScreen.js";
 import { SignUpScreen } from "navigation/SignUpScreen.js";
+import { MessageBox } from "components/MessageBox";
+
+import { withRouter } from "react-router-dom";
+
+import { restoreSession } from "actions";
+
+class ScrollToTop extends React.Component {
+  componentDidUpdate(prevProps) {
+    if (this.props.location.pathname !== prevProps.location.pathname) {
+      window.scrollTo(0, 0);
+    }
+  }
+
+  render() {
+    return null;
+  }
+}
+
+ScrollToTop = withRouter(ScrollToTop);
 
 function App(props) {
+  useEffect(props.restoreSession, []);
+
   return (
-    <Router>
+    <Router basename="/debater/frontend">
+      <ScrollToTop />
+      <MessageBox />
       <div className="App">
         {props.user.logged ? (
           <>
             <Redirect to="/" />
-            <ParticipantScreen />
+            <Switch>
+              <Route path="/konto">
+                <AccountScreen />
+              </Route>
+              <Route path="/debata">
+                <DebateScreen />
+              </Route>
+              <Route path="/">
+                <ParticipantScreen />
+              </Route>
+            </Switch>
           </>
         ) : (
           <Switch>
@@ -41,6 +76,6 @@ function App(props) {
 const mapStateToProps = (state) => {
   return { user: state.user };
 };
-const mapDispatchToProps = {};
+const mapDispatchToProps = { restoreSession };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

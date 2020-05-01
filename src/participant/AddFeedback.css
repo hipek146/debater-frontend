@@ -1,0 +1,48 @@
+.AddFeedback-main {
+  display: flex;
+  flex-wrap: wrap;
+}
+.AddFeedback-left {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin-right: auto;
+}
+
+.AddFeedback-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  margin-left: auto;
+}
+.AddFeedback-right img:hover {
+  cursor: pointer;
+}
+
+.AddFeedback-textarea {
+  width: 380px;
+  height: 160px;
+  margin-right: 20px;
+  margin-bottom: 10px;
+  resize: none;
+}
+
+.AddFeedback-send {
+  align-self: flex-start;
+  margin-left: 50px;
+  margin-right: 50px;
+  padding: 10px;
+  width: 137px;
+  background: #575757;
+
+  text-align: center;
+  color: #dedddd;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.AddFeedback-send:hover {
+  cursor: pointer;
+}

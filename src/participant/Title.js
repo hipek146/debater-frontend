@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Title.css";
 
 export const Title = () => {
   const [windowHeight, setWindowHeight] = useState(window.innerHeight);
-  window.addEventListener("resize", () => {
-    setWindowHeight(window.innerHeight);
-  });
+
+  useEffect(() => {
+    const listener = () => setWindowHeight(window.innerHeight);
+    window.addEventListener("resize", listener);
+    return () => window.removeEventListener("resize", listener);
+  }, []);
+
   return (
     <div style={{ ...style.title, minHeight: windowHeight }}>
       <div style={{ ...style.filter, minHeight: windowHeight }}>

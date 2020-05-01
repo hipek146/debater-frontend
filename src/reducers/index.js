@@ -6,15 +6,36 @@ const user = (state = { logged: false }, action) => {
       return {
         ...state,
         logged: true,
+        token: action.token,
       };
     case "USER_LOGGED_OUT":
       return {
         ...state,
         logged: false,
+        token: null,
       };
     default:
       return state;
   }
 };
 
-export default combineReducers({ user });
+const message = (state = { active: false }, action) => {
+  switch (action.type) {
+    case "MESSAGE_CREATED":
+      return {
+        ...state,
+        active: true,
+        title: action.title,
+        content: action.content,
+      };
+    case "MESSAGE_CLOSED":
+      return {
+        ...state,
+        active: false,
+      };
+    default:
+      return state;
+  }
+};
+
+export default combineReducers({ user, message });

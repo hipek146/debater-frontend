@@ -6,6 +6,11 @@
 
   position: relative;
 }
+.Debates a {
+  text-decoration: none;
+  flex: 1;
+  min-width: 250px;
+}
 
 .Debates-flex {
   position: relative;
