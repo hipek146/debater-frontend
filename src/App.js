@@ -11,6 +11,7 @@ import { HomeScreen } from "navigation/HomeScreen.js";
 import { ParticipantScreen } from "navigation/ParticipantScreen.js";
 import { AccountScreen } from "navigation/AccountScreen.js";
 import { DebateScreen } from "navigation/DebateScreen.js";
+import { ArchitectScreen } from "navigation/ArchitectScreen.js";
 import { SignInScreen } from "navigation/SignInScreen.js";
 import { SignUpScreen } from "navigation/SignUpScreen.js";
 import { MessageBox } from "components/MessageBox";
@@ -47,6 +48,9 @@ function App(props) {
             <Switch>
               <Route path="/konto">
                 <AccountScreen />
+              </Route>
+              <Route path="/projektant">
+                <ArchitectScreen />
               </Route>
               <Route path="/debata">
                 <DebateScreen />

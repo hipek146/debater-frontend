@@ -23,6 +23,9 @@ export const NavBarComponent = (props) => {
             <Link className="NavBar-button" to="/konto">
               MOJE KONTO
             </Link>
+            <Link className="NavBar-button" to="/projektant">
+              PROJEKTANT TURNIEJU
+            </Link>
             <HashLink className="NavBar-button" to="/#turniej">
               TURNIEJ
             </HashLink>
