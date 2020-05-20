@@ -44,7 +44,6 @@ function App(props) {
       <div className="App">
         {props.user.logged ? (
           <>
-            <Redirect to="/" />
             <Switch>
               <Route exact path="/konto">
                 <AccountScreen />

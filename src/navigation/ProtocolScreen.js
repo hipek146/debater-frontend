@@ -6,7 +6,10 @@ import { TimeAndPlace } from "participant/TimeAndPlace";
 import { JudgesAndMarshals } from "participant/JudgesAndMarshals";
 import { Teams } from "participant/Teams";
 import { AddFeedback } from "participant/AddFeedback";
-import {Verdict} from "marshall/Verdict.js"
+import { AddProtocol} from "marshall/AddProtocol";
+import { Verdict } from "marshall/Verdict.js";
+import { createMessage } from "actions";
+import { CenterWrapper } from "wrappers/CenterWrapper";
 
 import { fetchData } from "functions/fetchData";
 
@@ -27,19 +30,30 @@ export const ProtocolScreen = () => {
         >
 		</div>
 		
-		<HeaderWrapper header="DRUŻYNY">
-          <Teams teams={data.teams} />
-        </HeaderWrapper>
+		<CenterWrapper header="WERDYKT">
+	      <Verdict teams={data.teams}/>
+        </CenterWrapper>
+		
+		<CenterWrapper header="INNE PUNKTY">
+	      <div style={style.header}>
+		    <div style={style.areas}>
+				<textarea style={style.txt}/>
+			</div>
+			<div style={style.areas}>
+			  <textarea style={style.txt}/>
+			</div>
+		  </div>
+        </CenterWrapper>
+		
+		<CenterWrapper header="DODATKOWE INFORMACJE">
+	      <textarea style={style.bigarea}/>
+        </CenterWrapper>
 
-		<HeaderWrapper header="WERDYKTy">
-	     <Verdict teams={data.teams}/>
-          <textarea/>
-		 
-        </HeaderWrapper>
-
-        <HeaderWrapper header="DODAJ FEEDBACK">
-          <AddFeedback />
-        </HeaderWrapper>
+	
+        <div style={style.div}>
+		  <AddProtocol />
+        </div>
+		
       </div>
     </>
   );
@@ -66,5 +80,22 @@ const style = {
     fontSize: "24px",
 
     color: "#343434",
+  },
+  bigarea:  {
+	 width: "900px",
+     height: "150px",
+	 resize: "none",
+  },
+  txt: {
+     width: "450px",
+     height: "150px",
+	 resize: "none",
+  },
+  areas: {
+	  padding: "50px",
+  },
+  div: {
+	  paddingTop: "50px",
+	  paddingBottom: "50px"
   },
 };

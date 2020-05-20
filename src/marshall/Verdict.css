@@ -1,4 +1,4 @@
-.Teams {
+.Elements {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -6,20 +6,24 @@
 
   line-height: 23px;
 }
-.Teams-team {
+.Element {
   flex: 1;
   min-width: 250px;
 }
-.Teams-flex {
+.verdict-flex {
   /* display: flex;
   flex-direction: column;
   align-items: center; */
 }
-.Teams-team > div:hover {
+.Element > div:hover {
   /* background: #ececec !important; */
 }
-.Teams-name {
+.verdict-name {
   font-weight: 600;
   font-size: 16px;
   line-height: 50px;
+}
+
+.verdict-element {
+	padding: 25px;
 }

@@ -1,0 +1,22 @@
+.AddProtocol-main {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.AddProtocol-send {
+  margin-left: 50px;
+  margin-right: 50px;
+  padding: 10px;
+  width: 137px;
+  background: #575757;
+
+  text-align: center;
+  
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.AddProtocol-send:hover {
+  cursor: pointer;
+}
