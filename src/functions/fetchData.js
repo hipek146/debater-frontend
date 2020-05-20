@@ -176,7 +176,32 @@ export const fetchData = async (endpoint, setState) => {
         },
       ],
     });
-  else if (endpoint === "debata")
+    else if (endpoint === "protokol")
+    setState({
+      name: "DODAJ/EDYTUJ PROTOKÓŁ Z DEBATY",
+
+      teams: [
+        {
+          name: "Drużyna 1",
+          participants: [
+            "John Stone",
+            "Ponnappa Priya",
+            "Mia Wong",
+            "Peter Stanbridge",
+          ],
+        },
+        {
+          name: "Drużyna 2",
+          participants: [
+            "John Stones",
+            "Ponnappa Priya",
+            "Mia Wong",
+            "Peter Stanbridge",
+          ],
+        },
+      ],
+	});
+	else if (endpoint === "debata")
     setState({
       name: "DEBATA 1",
 

@@ -14,6 +14,7 @@ import { DebateScreen } from "navigation/DebateScreen.js";
 import { SignInScreen } from "navigation/SignInScreen.js";
 import { SignUpScreen } from "navigation/SignUpScreen.js";
 import { MessageBox } from "components/MessageBox";
+import {ProtocolScreen} from "navigation/ProtocolScreen.js";
 
 import { withRouter } from "react-router-dom";
 
@@ -45,11 +46,14 @@ function App(props) {
           <>
             <Redirect to="/" />
             <Switch>
-              <Route path="/konto">
+              <Route exact path="/konto">
                 <AccountScreen />
               </Route>
-              <Route path="/debata">
+              <Route exact path="/debata">
                 <DebateScreen />
+              </Route>
+			  <Route exact path="/protokol">
+                <ProtocolScreen />
               </Route>
               <Route path="/">
                 <ParticipantScreen />
