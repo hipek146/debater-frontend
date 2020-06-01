@@ -36,7 +36,6 @@ export const logOut = () => (dispatch) => {
   dispatch(userLoggedOut());
 };
 
-
 export const createMessage = ({ title, content }) => ({
   type: "MESSAGE_CREATED",
   title,
