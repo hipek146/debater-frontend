@@ -48,7 +48,7 @@ function App(props) {
               <Route path="/konto">
                 <AccountScreen />
               </Route>
-              <Route path="/debata">
+              <Route path="/debata/:id">
                 <DebateScreen />
               </Route>
               <Route path="/">

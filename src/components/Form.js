@@ -25,7 +25,7 @@ export const FormComponent = (props) => {
       <div
         className="Form-button"
         onClick={() => {
-          props.logIn({ ...value });
+          props.logIn(value);
         }}
       >
         {button}

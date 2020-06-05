@@ -1,6 +1,7 @@
-export const userLogged = (token) => ({
+export const userLogged = (token, mode) => ({
   type: "USER_LOGGED",
   token,
+  mode
 });
 
 export const userLoggedOut = () => ({
@@ -28,7 +29,7 @@ export const logIn = (data) => (dispatch) => {
   const token = "token";
   document.cookie =
     "session=" + token + "; expires=" + now.toUTCString() + "; path=/";
-  dispatch(userLogged(token));
+  dispatch(userLogged(token, "mode"));
 };
 
 export const logOut = () => (dispatch) => {

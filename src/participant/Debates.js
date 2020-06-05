@@ -14,7 +14,7 @@ export const Debates = (props) => {
           else if (debate.upcoming) header = "PRZYSZŁA DEBATA";
           else if (debate.past) header = "ZAKOŃCZONA DEBATA";
           return (
-            <Link to="/debata" key={i}>
+            <Link to={"/debata/" + debate.link} key={i}>
               <div className="Debates-flex">
                 {header && <div className="Debates-mine">{header}</div>}
                 <div className="Debates-name">{debate.name}</div>

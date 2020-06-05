@@ -7,10 +7,14 @@ import { TimeAndPlace } from "participant/TimeAndPlace";
 import { JudgesAndMarshals } from "participant/JudgesAndMarshals";
 import { Teams } from "participant/Teams";
 import { AddFeedback } from "participant/AddFeedback";
+import { useParams } from "react-router-dom";
 
 import { fetchData } from "functions/fetchData";
 
 export const DebateScreen = () => {
+  const { id } = useParams();
+  console.log(id);
+
   const [data, setData] = useState({});
 
   useEffect(() => {
