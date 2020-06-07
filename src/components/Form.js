@@ -3,8 +3,8 @@ import { connect } from "react-redux";
 import "./Form.css";
 import { logIn } from "actions";
 
-export const FormComponent = (props) => {
-  const { title, fields, button } = props;
+export const Form = (props) => {
+  const { title, fields, button, callback } = props;
 
   const [value, setValue] = useState({});
 
@@ -25,7 +25,7 @@ export const FormComponent = (props) => {
       <div
         className="Form-button"
         onClick={() => {
-          props.logIn(value);
+          callback(value);
         }}
       >
         {button}
@@ -33,10 +33,3 @@ export const FormComponent = (props) => {
     </div>
   );
 };
-
-const mapStateToProps = (state) => {
-  return {};
-};
-const mapDispatchToProps = { logIn };
-
-export const Form = connect(mapStateToProps, mapDispatchToProps)(FormComponent);

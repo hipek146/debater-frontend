@@ -7,11 +7,9 @@ import { JudgesAndMarshals } from "participant/JudgesAndMarshals";
 import { Teams } from "participant/Teams";
 import { Debates } from "participant/Debates";
 import { Links } from "participant/Links";
+import { Header } from "components/Header";
 
 import { fetchData } from "functions/fetchData";
-
-import Vector1 from "assets/images/Vector 1.svg";
-import Vector2 from "assets/images/Vector 2.svg";
 
 export const Tournament = () => {
   const [data, setData] = useState({});
@@ -22,7 +20,7 @@ export const Tournament = () => {
 
   return (
     <>
-      <div className="Tournament-header" id="turniej">
+      {/* <div className="Tournament-header" id="turniej">
         <div className="Tournament-headerWrapper">
           <img className="Tournament-leftVector" src={Vector1} alt="L" />
           <div
@@ -31,7 +29,8 @@ export const Tournament = () => {
           ></div>
           <img className="Tournament-rightVector" src={Vector2} alt="|" />
         </div>
-      </div>
+      </div> */}
+      <Header idName="turniej" name={data.name} />
 
       <HeaderWrapper header="INFORMACJE <br /> O TURNIEJU">
         <Informations content={data.informations} />

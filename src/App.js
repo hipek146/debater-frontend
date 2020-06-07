@@ -8,12 +8,18 @@ import {
 } from "react-router-dom";
 import "./App.css";
 import { HomeScreen } from "navigation/HomeScreen.js";
+import { OrganizerScreen } from "navigation/OrganizerScreen.js";
 import { ParticipantScreen } from "navigation/ParticipantScreen.js";
 import { AccountScreen } from "navigation/AccountScreen.js";
 import { DebateScreen } from "navigation/DebateScreen.js";
 import { SignInScreen } from "navigation/SignInScreen.js";
 import { SignUpScreen } from "navigation/SignUpScreen.js";
 import { MessageBox } from "components/MessageBox";
+import { ProtocolScreen } from "navigation/ProtocolScreen.js";
+
+import { NewTournament } from "organizer/NewTournament.js";
+import { CurrentTournaments } from "organizer/CurrentTournaments.js";
+import { FinishedTournaments } from "organizer/FinishedTournaments.js";
 
 import { withRouter } from "react-router-dom";
 
@@ -45,14 +51,32 @@ function App(props) {
           <>
             <Redirect to="/" />
             <Switch>
-              <Route path="/konto">
+              <Route exact path="/konto">
                 <AccountScreen />
               </Route>
               <Route path="/debata/:id">
                 <DebateScreen />
               </Route>
+              <Route exact path="/protokol">
+                <ProtocolScreen />
+              </Route>
+
+              <Route exact path="/nowy-turniej">
+                <NewTournament />
+              </Route>
+              <Route exact path="/aktualne-turnieje">
+                <CurrentTournaments />
+              </Route>
+              <Route exact path="/zakonczone-turnieje">
+                <FinishedTournaments />
+              </Route>
+
               <Route path="/">
-                <ParticipantScreen />
+                {props.user.mode === "organizer" ? (
+                  <OrganizerScreen />
+                ) : (
+                  <ParticipantScreen />
+                )}
               </Route>
             </Switch>
           </>

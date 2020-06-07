@@ -1,7 +1,7 @@
 export const userLogged = (token, mode) => ({
   type: "USER_LOGGED",
   token,
-  mode
+  mode,
 });
 
 export const userLoggedOut = () => ({
@@ -14,12 +14,15 @@ export const restoreSession = (data) => (dispatch) => {
     if (match) return match[2];
   };
   const session = getCookie("session");
+  const mode = getCookie("mode");
   if (session) {
     const now = new Date();
     now.setTime(now.getTime() + 12 * 3600 * 1000);
     document.cookie =
       "session=" + session + "; expires=" + now.toUTCString() + "; path=/";
-    dispatch(userLogged(session));
+    document.cookie =
+      "mode=" + mode + "; expires=" + now.toUTCString() + "; path=/";
+    dispatch(userLogged(session, mode));
   }
 };
 
@@ -27,9 +30,12 @@ export const logIn = (data) => (dispatch) => {
   const now = new Date();
   now.setTime(now.getTime() + 12 * 3600 * 1000);
   const token = "token";
+  const mode = data && data.email === "organizer" ? "organizer" : "user";
   document.cookie =
     "session=" + token + "; expires=" + now.toUTCString() + "; path=/";
-  dispatch(userLogged(token, "mode"));
+  document.cookie =
+    "mode=" + mode + "; expires=" + now.toUTCString() + "; path=/";
+  dispatch(userLogged(token, mode));
 };
 
 export const logOut = () => (dispatch) => {
