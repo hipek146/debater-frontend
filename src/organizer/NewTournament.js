@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { Header } from "components/Header";
 import map from "assets/images/map.jpg";
+import "./NewTournament.css"
+import {CenterWrapper} from "wrappers/CenterWrapper"
 
 import { createMessage } from "actions";
 import { fetchData } from "functions/fetchData";
@@ -25,23 +27,32 @@ export const NewTournamentComponent = (props) => {
         <Header idName="nowy-turniej" name="NOWY<br>TURNIEJ" />
         <div className="NewTournament-content">
           <div className="NewTournament-left"></div>
-          <div className="NewTournament-label">NAZWA TURNIEJU</div>
-          <input
+		  <CenterWrapper header="NAZWA TURNIEJU">
+          <textarea
             value={data.name}
+			style={style.nazwa}
             onChange={(event) => {
               setData({ ...data, name: event.target.value });
             }}
           />
-          <div className="NewTournament-label">MIEJSCE</div>
-          <input
+		  </CenterWrapper>
+		  
+          <CenterWrapper header="MIEJSCE">
+		  <div className="miejsce">
+          <textarea
             value={data.place}
             onChange={(event) => {
               setData({ ...data, place: event.target.value });
             }}
           />
           <img src={map} alt="map" />
-          <div className="NewTournament-right">
-            <div className="NewTournament-label">CZAS TRWANIA</div>
+		  </div>
+		  </CenterWrapper>
+		  
+          
+            <CenterWrapper style={style.but} header="CZAS TRWANIA">
+			<div className="czas">
+			OD:&nbsp; &nbsp;  
             <input
               type="time"
               value={data.time}
@@ -56,9 +67,28 @@ export const NewTournamentComponent = (props) => {
                 setData({ ...data, date: event.target.value });
               }}
             />
-          </div>
+			<br/><br/>
+			DO:&nbsp; &nbsp;  
+            <input
+              type="time"
+              value={data.time}
+              onChange={(event) => {
+                setData({ ...data, time: event.target.value });
+              }}
+            />
+            <input
+              type="date"
+              value={data.date}
+              onChange={(event) => {
+                setData({ ...data, date: event.target.value });
+              }}
+            />
+			</div>
+			</CenterWrapper>
+          
         </div>
-        <div className="NewTournament-label">Struktura i zasady</div>
+		<CenterWrapper header="STRUKTURA I ZASADY">
+        <div className="Struktura">
         <textarea
           className="NewTournament-textarea"
           value={data.rules}
@@ -68,7 +98,7 @@ export const NewTournamentComponent = (props) => {
         />
         <label>
           <input
-            type="radio"
+            type="checkbox"
             name="phase"
             value="group"
             onChange={(event) => {
@@ -79,7 +109,7 @@ export const NewTournamentComponent = (props) => {
         </label>
         <label>
           <input
-            type="radio"
+            type="checkbox"
             name="phase"
             value="final"
             onChange={(event) => {
@@ -88,8 +118,10 @@ export const NewTournamentComponent = (props) => {
           />
           Faza finałowa
         </label>
-        <div
-          className="NewTournament-button"
+		</div>
+		</CenterWrapper>
+		<div style={style.but}>
+          <div className="NewTournament-button"
           onClick={() => {
             props.createMessage({
               title: "Stworzono turniej",
@@ -102,9 +134,19 @@ export const NewTournamentComponent = (props) => {
         >
           STWÓRZ TURNIEJ
         </div>
-      </div>
+		</div>
     </div>
+	</div>
   );
+};
+
+const style = {
+  but:
+  { 
+	 display: "flex",
+	 justifyContent: "center",
+	 padding: "30px"
+  }
 };
 
 const mapStateToProps = (state) => {
