@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { NavBar } from "components/NavBar";
 import { Link } from "react-router-dom";
 import { Header } from "components/Header";
+import "./CurrentTournaments.css";
 
 import { fetchData } from "functions/fetchData";
 
@@ -30,7 +31,7 @@ export const CurrentTournaments = () => {
                   </div>
                 </Link>
                 <div className="CurrentTournaments-bottom">
-                  <Link to={"/" + element.link + "/dodaj-sedziow-i-marszalkow"}>
+                  <Link to={"/" + element.link + "/dodaj-sedziow<br/>-i-marszalkow"}>
                     <div className="CurrentTournaments-button">
                       Dodaj sędziów i marszałków
                     </div>
