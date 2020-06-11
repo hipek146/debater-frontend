@@ -1,11 +1,74 @@
 import store from "store";
+//const fetch = require('node-fetch');
+
+export const rest_address = "http://77.55.192.26:2137";
+//TMP:
+const tournament_id = 0;
+
+function make_promise_request(api_url,method){
+  var promise_fetch = new Promise(function(fullfill,reject){
+    var url = api_url;
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function() {
+      if (this.readyState === 4 && this.status === 200) {
+        var response = JSON.parse(request.responseText);
+        fullfill({
+          from: url,
+          content: response});
+      }
+      else if (this.readyState === 4 && this.status !== 200){
+        reject(this.status)
+      }
+    };
+    console.log(url);
+    request.open(method, url, true);
+    request.send(); 
+  });
+  return promise_fetch;
+}
 
 export const fetchData = async (endpoint, setState) => {
   const state = store.getState();
   const token = state.user.token;
   console.log(token);
-  if (endpoint === "turniej")
-    setState({
+  if (endpoint === "turniej"){
+
+    var url1 = rest_address + "/api/tournament/"+tournament_id;
+    var url2 = rest_address + "/api/tournament/"+tournament_id+"/jury"
+    var url3 = rest_address + "/api/tournament/"+tournament_id+"/marshall"
+    var url4 = rest_address + "/api/tournament/"+tournament_id+"/team"
+
+    var finaljson = {};
+    Promise.all([
+    make_promise_request(url1,"GET"),
+    make_promise_request(url2,"GET"),
+    make_promise_request(url3,"GET"),
+    make_promise_request(url4,"GET")]).then(
+      (responses)=>{
+        responses.forEach(element => {
+          if(element.from === url1){
+            finaljson.name = element.content.name;
+            finaljson.informations = "lorem ipsum";
+            finaljson.timeAndPlace = element.content.start_date + ", " + element.content.city + ", " + element.content.location;
+          }
+          if(element.from === url2){
+            finaljson.judges = element.content;
+          }
+          if(element.from === url3){
+            finaljson.marshalls = element.content;
+          }
+          if(element.from === url4){
+            finaljson.teams = element.content;
+          }
+        });
+      }
+    );
+
+    setState(finaljson);
+    
+
+    /*setState({
+
       name: "NAZWA <br /> TURNIEJU",
 
       informations: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce efficitur
@@ -175,55 +238,7 @@ export const fetchData = async (endpoint, setState) => {
           past: true,
         },
       ],
-    });
-  else if (endpoint === "protokol")
-    setState({
-      name: "DODAJ/EDYTUJ PROTOKÓŁ Z DEBATY",
 
-      teams: [
-        {
-          name: "Drużyna 1",
-          participants: [
-            "John Stone",
-            "Ponnappa Priya",
-            "Mia Wong",
-            "Peter Stanbridge",
-          ],
-        },
-        {
-          name: "Drużyna 2",
-          participants: [
-            "John Stones",
-            "Ponnappa Priya",
-            "Mia Wong",
-            "Peter Stanbridge",
-          ],
-        },
-      ],
-    });
-  else if (endpoint === "aktualne turnieje")
-    setState([
-      {
-        name: "TURNIEJ 1",
-        link: "link-turniej-1",
-      },
-      {
-        name: "TURNIEJ 2",
-        link: "link-turniej-2",
-      },
-    ]);
-  else if (endpoint === "zakonczone turnieje")
-    setState([
-      {
-        name: "TURNIEJ 1",
-        link: "link-turniej-1",
-      },
-      {
-        name: "TURNIEJ 2",
-        link: "link-turniej-2",
-      },
-    ]);
-  else if (endpoint === "debata")
     setState({
       name: "DEBATA 1",
 
@@ -272,4 +287,5 @@ export const fetchData = async (endpoint, setState) => {
     metus vitae mi elementum porta. Vestibulum cursus in turpis eu accumsan.
     Nam vel nulla consectetur, consectetur odio ac, pharetra eros.`,
     });
+    */
 };
