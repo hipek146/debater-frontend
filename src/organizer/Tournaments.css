@@ -1,0 +1,32 @@
+.Tournaments-header {
+  text-decoration: none;
+  display: grid;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.Tournaments-button {
+
+  padding-left: 150px;
+  padding-right: 150px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  text-decoration: none;
+
+  align-self: flex-start;
+  width: 137px;
+  background: #575757;
+
+  text-align: center;
+  color: #dedddd;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.Tournaments-button:hover {
+  cursor: pointer;
+  text-decoration: none;
+}
+.Tournaments-button:visited {
+  text-decoration: none;
+}

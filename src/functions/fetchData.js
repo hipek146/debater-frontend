@@ -238,16 +238,7 @@ export const fetchData = async (endpoint, setState) => {
           past: true,
         },
       ],
-    });*/
-  }
-  else if (endpoint === "debata"){
-    var phase = 0;
-    var debatenumber = 0;
 
-  }
-
-  
-/*
     setState({
       name: "DEBATA 1",
 

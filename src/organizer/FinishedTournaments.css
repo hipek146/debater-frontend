@@ -1,0 +1,71 @@
+.FinishedTournaments-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+}
+.FinishedTournaments-content a {
+  text-decoration: none;
+  flex: 1;
+  min-width: 250px;
+}
+
+
+.FinishedTournaments-tournament {
+	padding: 25px;
+}
+
+
+.FinishedTournaments-header{
+  position: relative;
+  flex: 1;
+  min-width:500px;
+  height: 124px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 124px;
+  text-align: center;
+
+  color: #666666;
+
+  background: #e4e4e4;
+}
+
+.FinishedTournaments-header:hover {
+  background: rgba(232, 232, 232, 0.5);
+}
+
+.FinishedTournaments-bottom {
+  position: relative;
+  flex: 1;
+  min-width: 250px;
+  height: 124px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #dddddd;
+}
+
+
+
+.FinishedTournaments-button {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 124px;
+  text-align: center;
+
+  color: #666666;
+}
+
+.FinishedTournaments-button:hover {
+  background: rgba(232, 232, 232, 0.5);
+}

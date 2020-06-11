@@ -1,3 +1,7 @@
+.NavBar-relative {
+  position: relative !important;
+}
+
 .NavBar {
   position: absolute;
   z-index: 100;

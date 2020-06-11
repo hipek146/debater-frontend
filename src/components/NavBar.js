@@ -8,7 +8,7 @@ import { logOut } from "actions";
 
 export const NavBarComponent = (props) => {
   return (
-    <div className="NavBar">
+    <div className={"NavBar" + (props.relative ? " NavBar-relative" : "")}>
       <div className="NavBar-Logo">
         <img
           className="NavBar-logo"
@@ -19,17 +19,28 @@ export const NavBarComponent = (props) => {
       </div>
       <div className="NavBar-right">
         {props.user.logged ? (
-          <>
-            <Link className="NavBar-button" to="/konto">
-              MOJE KONTO
-            </Link>
-            <HashLink className="NavBar-button" to="/#turniej">
-              TURNIEJ
-            </HashLink>
-            <Link to="/" className="NavBar-button" onClick={props.logOut}>
-              WYLOGUJ SIĘ
-            </Link>
-          </>
+          props.user.mode === "organizer" ? (
+            <>
+              <HashLink className="NavBar-button" to="/#turnieje">
+                TURNIEJE
+              </HashLink>
+              <Link to="/" className="NavBar-button" onClick={props.logOut}>
+                WYLOGUJ SIĘ
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link className="NavBar-button" to="/konto">
+                MOJE KONTO
+              </Link>
+              <HashLink className="NavBar-button" to="/#turniej">
+                TURNIEJ
+              </HashLink>
+              <Link to="/" className="NavBar-button" onClick={props.logOut}>
+                WYLOGUJ SIĘ
+              </Link>
+            </>
+          )
         ) : (
           <>
             <Link className="NavBar-button" to="rejestracja">

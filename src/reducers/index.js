@@ -7,6 +7,7 @@ const user = (state = { logged: false }, action) => {
         ...state,
         logged: true,
         token: action.token,
+        mode: action.mode,
       };
     case "USER_LOGGED_OUT":
       return {

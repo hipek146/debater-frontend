@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "participant/Tournament.css";
 import { NavBar } from "components/NavBar";
 import { HeaderWrapper } from "wrappers/HeaderWrapper";
@@ -29,6 +30,14 @@ export const DebateScreen = () => {
           style={style.header}
           dangerouslySetInnerHTML={{ __html: data.name }}
         ></div>
+		
+		<HeaderWrapper>
+		<div style = {style.header} className="protocol-link">
+			<Link to="/protokol">
+              DODAJ PROTOKÓŁ Z DEBATY
+			</Link>
+		</div>
+		</HeaderWrapper>
 
         <HeaderWrapper header="INFORMACJE <br /> O DEBACIE">
           <Informations content={data.informations} />
