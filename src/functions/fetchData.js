@@ -56,7 +56,10 @@ export const fetchData = async (endpoint, setState) => {
             element.content.location;
         }
         if (element.from === url2) {
-          finaljson.judges = element.content;
+          finaljson.judges = [];
+          element.content.forEach(e => {
+            finaljson.judges.push(e.name+" "+e.surname);
+          });
         }
         if (element.from === url3) {
           finaljson.marshalls = element.content;
@@ -67,8 +70,9 @@ export const fetchData = async (endpoint, setState) => {
       });
     });
 
-    //setState(finaljson);
+    setState(finaljson);
 
+    /*
     setState({
       name: "NAZWA <br /> TURNIEJU",
 
@@ -199,7 +203,7 @@ export const fetchData = async (endpoint, setState) => {
           href: "http://www.google.pl",
         },
       ],
-    });
+    });*/
   } else if (endpoint === "konto")
     setState({
       firstName: "John",
@@ -336,5 +340,4 @@ export const fetchData = async (endpoint, setState) => {
     metus vitae mi elementum porta. Vestibulum cursus in turpis eu accumsan.
     Nam vel nulla consectetur, consectetur odio ac, pharetra eros.`,
     });
-};
-}
+  };
