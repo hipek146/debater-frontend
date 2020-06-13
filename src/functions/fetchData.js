@@ -38,6 +38,7 @@ export const fetchData = async (endpoint, setState) => {
     var url4 = rest_address + "/api/tournament/" + tournament_id + "/team";
 
     var finaljson = {};
+    var judgesarr = [];
     Promise.all([
       make_promise_request(url1, "GET"),
       make_promise_request(url2, "GET"),
@@ -58,7 +59,8 @@ export const fetchData = async (endpoint, setState) => {
         if (element.from === url2) {
           finaljson.judges = [];
           element.content.forEach(e => {
-            finaljson.judges.push(e.name+" "+e.surname);
+            //finaljson.judges.push(e.name+" "+e.surname);
+            judgesarr.push(""+e.name+" "+e.surname);
           });
         }
         if (element.from === url3) {
@@ -72,7 +74,7 @@ export const fetchData = async (endpoint, setState) => {
 
     setState(finaljson);
 
-    /*
+    
     setState({
       name: "NAZWA <br /> TURNIEJU",
 
@@ -86,13 +88,7 @@ export const fetchData = async (endpoint, setState) => {
   metus vitae mi elementum porta. Vestibulum cursus in turpis eu accumsan.
   Nam vel nulla consectetur, consectetur odio ac, pharetra eros.`,
 
-      judges: [
-        "John Stone",
-        "Ponnappa Priya",
-        "Mia Wong",
-        "Peter Stanbridge",
-        "Natalie Lee-Walsh",
-      ],
+      judges: judgesarr,
 
       marshals: ["Ang Lie", "Nguta Ithya", "Tamzyn French"],
 
@@ -203,7 +199,7 @@ export const fetchData = async (endpoint, setState) => {
           href: "http://www.google.pl",
         },
       ],
-    });*/
+    });
   } else if (endpoint === "konto")
     setState({
       firstName: "John",
