@@ -3,7 +3,7 @@ import store from "store";
 
 export const rest_address = "http://77.55.192.26:2137";
 //TMP:
-const tournament_id = 0;
+const tournament_id = 2;
 
 function make_promise_request(api_url,method){
   var promise_fetch = new Promise(function(fullfill,reject){
@@ -289,3 +289,4 @@ export const fetchData = async (endpoint, setState) => {
     });
     */
 };
+}
