@@ -16,6 +16,7 @@ import { SignInScreen } from "navigation/SignInScreen.js";
 import { SignUpScreen } from "navigation/SignUpScreen.js";
 import { MessageBox } from "components/MessageBox";
 import { ProtocolScreen } from "navigation/ProtocolScreen.js";
+import { TournamentScreen } from "navigation/TournamentScreen.js";
 
 import { NewTournament } from "organizer/NewTournament.js";
 import { CurrentTournaments } from "organizer/CurrentTournaments.js";
@@ -61,6 +62,9 @@ function App(props) {
                 <ProtocolScreen />
               </Route>
 
+              <Route path="/turniej/:id">
+                <TournamentScreen />
+              </Route>
               <Route exact path="/nowy-turniej">
                 <NewTournament />
               </Route>

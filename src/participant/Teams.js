@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Teams.css";
 
 export const Teams = (props) => {
-  const { teams } = props;
+  const { teams, edit, setEdit } = props;
 
-  return (
+  return edit ? (
+    <TeamsEdit {...props} />
+  ) : (
     <div className="Teams">
       {teams &&
         teams.map((team, i) => (
@@ -25,6 +27,49 @@ export const Teams = (props) => {
             </div>
           </div>
         ))}
+    </div>
+  );
+};
+
+const TeamsEdit = (props) => {
+  const { teams, edit, setEdit } = props;
+  const [team, setTeam] = useState(teams ? teams[0] : { name: "" });
+  return (
+    <div className="Teams">
+      {teams && (
+        <>
+          <select onChange={(event) => setTeam(teams[event.target.value])}>
+            {teams.map((el, i) => (
+              <option value={i} key={i}>
+                {el.name}
+              </option>
+            ))}
+          </select>
+          {team && (
+            <div className="Teams-flex">
+              <div className="Teams-name">{team.name}</div>
+              {team.participants.map((participant, i) => (
+                <div key={i}>
+                  <input
+                    value={participant}
+                    onChange={(event) => {
+                      let array = team.participants;
+                      array[i] = event.target.value;
+                      setTeam({ name: team.name, participants: [...array] });
+                    }}
+                  />
+                  <div className="App-button">USUŃ</div>
+                  <div className="App-button">WYŚLIJ LINK</div>
+                </div>
+              ))}
+            </div>
+          )}
+        </>
+      )}
+      <div className="App-button" onClick={() => setEdit(false)}>
+        COFNIJ
+      </div>
+      <div className="App-button">ZAPISZ INFORMACJE</div>
     </div>
   );
 };

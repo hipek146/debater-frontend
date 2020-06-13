@@ -10,17 +10,19 @@ export const Tournaments = () => {
     "zakonczone-turnieje": "ZAKOŃCZONE TURNIEJE",
   };
   return (
-   <div style={style.main}>
-    <div className="Tournaments-header" id="turnieje">
-      {Object.keys(data).map((key, i) => (
-        <Link key={i} to={"/" + key}>
-		  <CenterWrapper>
-          <div style={style.buttontext} className="Tournaments-button">{data[key]}</div>
-		  </CenterWrapper>
-        </Link>
-      ))}
+    <div style={style.main}>
+      <div className="Tournaments-header" id="turnieje">
+        {Object.keys(data).map((key, i) => (
+          <Link key={i} to={"/" + key}>
+            <CenterWrapper>
+              <div style={style.buttontext} className="Tournaments-button">
+                {data[key]}
+              </div>
+            </CenterWrapper>
+          </Link>
+        ))}
+      </div>
     </div>
-	</div>
   );
 };
 
@@ -31,10 +33,9 @@ const style = {
     boxSizing: "border-box",
     paddingTop: "104px",
     minHeight: "100%",
-	textDecoration: "none"
+    textDecoration: "none",
   },
-  buttontext:
-  {
-	  textDecoration: "none"
-  }
-}
+  buttontext: {
+    textDecoration: "none",
+  },
+};

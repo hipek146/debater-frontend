@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
 import "./Tournament.css";
-import { HeaderWrapper } from "wrappers/HeaderWrapper";
+import { HeaderWrapper as HeaderWrapperComponent } from "wrappers/HeaderWrapper";
 import { Informations } from "components/Informations";
 import { TimeAndPlace } from "participant/TimeAndPlace";
 import { JudgesAndMarshals } from "participant/JudgesAndMarshals";
@@ -10,13 +11,20 @@ import { Links } from "participant/Links";
 import { Header } from "components/Header";
 
 import { fetchData } from "functions/fetchData";
+import { findByLabelText } from "@testing-library/react";
 
-export const Tournament = () => {
+import { createMessage } from "actions";
+
+const TournamentComponent = (props) => {
   const [data, setData] = useState({});
 
   useEffect(() => {
     fetchData("turniej", setData);
   }, []);
+
+  const HeaderWrapper = props.organizer
+    ? (props) => <HeaderWrapperComponent organizer {...props} />
+    : HeaderWrapperComponent;
 
   return (
     <>
@@ -48,11 +56,11 @@ export const Tournament = () => {
         <Teams teams={data.teams} />
       </HeaderWrapper>
 
-      <HeaderWrapper header="PRZYSZŁE <br /> DEBATY">
+      <HeaderWrapper header="PRZYSZŁE <br /> DEBATY" organizer={false}>
         <Debates debates={data.upcomingDebates} />
       </HeaderWrapper>
 
-      <HeaderWrapper header="ZAKOŃCZONE <br /> DEBATY">
+      <HeaderWrapper header="ZAKOŃCZONE <br /> DEBATY" organizer={false}>
         <Debates debates={data.pastDebates} />
       </HeaderWrapper>
 
@@ -63,6 +71,40 @@ export const Tournament = () => {
       <HeaderWrapper header="PLIKI <br /> DO POBRANIA">
         <Links links={data.links} />
       </HeaderWrapper>
+
+      {props.organizer && (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginBottom: "30px",
+          }}
+        >
+          <div
+            className="App-button"
+            onClick={() =>
+              props.createMessage({
+                title: "Turniej został zakończony",
+                content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce efficitur
+  metus vitae mi elementum porta. Vestibulum cursus in turpis eu accumsan.
+  Nam vel nulla consectetur, consectetur odio ac, pharetra eros.`,
+              })
+            }
+          >
+            ZAKOŃCZ TURNIEJ
+          </div>
+        </div>
+      )}
     </>
   );
 };
+
+const mapStateToProps = (state) => {
+  return {};
+};
+const mapDispatchToProps = { createMessage };
+
+export const Tournament = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TournamentComponent);

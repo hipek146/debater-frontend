@@ -24,14 +24,14 @@ export const CurrentTournaments = () => {
               <div className="CurrentTournaments-tournament" key={i}>
                 <Link
                   className="CurrentTournaments-headerLink"
-                  to={"/" + element.link}
+                  to={"/turniej/" + element.link}
                 >
                   <div className="CurrentTournaments-header">
                     {element.name}
                   </div>
                 </Link>
                 <div className="CurrentTournaments-bottom">
-                  <Link to={"/" + element.link + "/dodaj-sedziow<br/>-i-marszalkow"}>
+                  <Link to={"/" + element.link + "/dodaj-sedziow-i-marszalkow"}>
                     <div className="CurrentTournaments-button">
                       Dodaj sędziów i marszałków
                     </div>

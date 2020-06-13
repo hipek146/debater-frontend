@@ -24,7 +24,7 @@ export const FinishedTournaments = () => {
               <div className="FinishedTournaments-tournament" key={i}>
                 <Link
                   className="FinishedTournaments-headerLink"
-                  to={"/" + element.link}
+                  to={"/turniej/" + element.link}
                 >
                   <div className="FinishedTournaments-header">
                     {element.name}

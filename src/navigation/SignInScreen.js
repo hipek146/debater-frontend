@@ -28,6 +28,7 @@ export const SignInScreenComponent = (props) => {
                   password: "password",
                 })
               );
+            else setLogin(() => props.logIn.bind(this));
           }}
         />
         Zaloguj jako organizator
